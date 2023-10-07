@@ -74,3 +74,8 @@ end
 group :production do
   gem 'pg'
 end
+
+gem 'devise'
+gem 'bootstrap', '~> 5.2.3'
+gem 'jquery-rails'
+gem 'mini_racer'
