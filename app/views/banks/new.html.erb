@@ -1,5 +1,8 @@
 <h2>銀行登録</h2>
  <%= form_with model: @bank, local: true do |f| %>
+
+  <%= render 'shared/error_messages', model: @bank %>
+  
     <div class='form_input_number'>
       <%= f.label :設定金額 %>
       <%= f.number_field :amount_price %>
