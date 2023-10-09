@@ -6,7 +6,6 @@ class BanksController < ApplicationController
 
   def create
     @bank = Bank.new(bank_params)
-    binding.pry
     if @bank.save
       redirect_to spendings_path
     else
@@ -25,9 +24,12 @@ class BanksController < ApplicationController
   end
 
   def update
-    bank = Bank.find(params[:id])
-    bank.update(bank_params)
-    redirect_to spendings_path
+    @bank = Bank.find(params[:id])
+    if @bank.update(bank_params)
+      redirect_to bank_path(@bank.id)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def show

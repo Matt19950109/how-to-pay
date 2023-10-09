@@ -1,0 +1,20 @@
+<h1>登録銀行の編集</h1>
+
+ <%= form_with model: @bank, local: true do |f| %>
+
+ <%= render 'shared/error_messages', model: @bank %>
+
+    <div class='form_input_number'>
+      <%= f.label :amount_price %>
+      <%= f.number_field :amount_price %>
+    </div>
+    <div class='form_input_account'>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form_action">
+      <%= f.submit "変更する", class: "btn btn-primary" %>
+    </div>
+ <% end %>
+
+<%= link_to 'トップページに戻る', root_path %>
