@@ -1,7 +1,7 @@
 class Bank < ApplicationRecord
   # アソシエーション
   belongs_to :user
-  has_many   :settlements
+  has_many   :settlements, dependent: :destroy
   
   # バリデーション(ユーザーごとに同じ銀行名が重複で登録できないように設定)
   validates :amount_price, presence: true
