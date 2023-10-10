@@ -6,6 +6,7 @@ class SettlementsController < ApplicationController
 
   def create
     @settlement = Settlement.new(settlement_params)
+    @banks = current_user.banks.all
     if @settlement.save
       redirect_to spendings_path
     else
