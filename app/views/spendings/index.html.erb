@@ -22,8 +22,7 @@
   <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">登録済の決済方法<span class="badge bg-light text-dark ms-2"><%= @settlement_count %></span></button>
   <ul class="dropdown-menu">
     <% @settlements.each do |settlement| %>
-      <li><%= settlement.payment %></li>
-      <li><%#= link_to settlement.name, settlement_path(settlement.id), class: "dropdown-item list-group-item-light text-decoration-none" %></li>
+      <li><%= link_to settlement.payment, settlement_path(settlement.id), class: "dropdown-item list-group-item-light text-decoration-none" %></li>
     <% end %>
   </ul>  
 </div>
