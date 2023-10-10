@@ -5,5 +5,4 @@ class Settlement < ApplicationRecord
 
   # バリデーション(ユーザーごとに同じ決済方法が重複で登録できないように設定)
   validates :payment, presence: true, uniqueness: { scope: :user }, length: { maximum: 30 }
-
 end
