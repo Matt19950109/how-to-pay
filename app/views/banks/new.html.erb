@@ -1,0 +1,19 @@
+<h2>銀行登録</h2>
+ <%= form_with model: @bank, local: true do |f| %>
+
+  <%= render 'shared/error_messages', model: @bank %>
+  
+    <div class='form_input_number'>
+      <%= f.label :設定金額 %>
+      <%= f.number_field :amount_price %>
+    </div>
+    <div class='form_input_account'>
+      <%= f.label :銀行名 %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="form_action">
+      <%= f.submit "登録する", class: "btn btn-primary" %>
+    </div>
+ <% end %>
+
+<%= link_to 'トップページに戻る', spendings_path %>

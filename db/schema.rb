@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_07_030738) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_08_121904) do
+  create_table "banks", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "amount_price", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_banks_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -24,4 +33,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_030738) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "banks", "users"
 end

@@ -3,7 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  
+  # アソシエーション
+  has_many :banks
+  
+  # バリデーション
   validates :nickname, presence: true, length: { maximum: 12 }
 
   #パスワードの数字混合のみ許可する
