@@ -2,14 +2,28 @@
 
 
 <div>
-    <%= link_to '銀行名を登録', new_bank_path, class: "btn btn-primary" %>
+    <%= link_to '銀行名を登録', new_bank_path, class: "btn btn-secondary" %>
 </div>
 
 <div class="btn-group">
-  <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">登録済の銀行<span class="badge bg-light text-dark ms-2"><%= @bank_count %></span></button>
+  <button class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown">登録済の銀行<span class="badge bg-light text-dark ms-2"><%= @bank_count %></span></button>
   <ul class="dropdown-menu">
     <% @banks.each do |bank| %>
         <li><%= link_to bank.name, bank_path(bank.id), class: "dropdown-item list-group-item-light text-decoration-none" %></li>
+    <% end %>
+  </ul>  
+</div>
+
+<div>
+  <%= link_to '決済方法を登録', new_settlement_path, class: "btn btn-primary" %>
+</div>
+
+<div class="btn-group">
+  <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">登録済の決済方法<span class="badge bg-light text-dark ms-2"><%= @settlement_count %></span></button>
+  <ul class="dropdown-menu">
+    <% @settlements.each do |settlement| %>
+      <li><%= settlement.payment %></li>
+      <li><%#= link_to settlement.name, settlement_path(settlement.id), class: "dropdown-item list-group-item-light text-decoration-none" %></li>
     <% end %>
   </ul>  
 </div>

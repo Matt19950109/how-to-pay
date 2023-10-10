@@ -1,10 +1,11 @@
 class SettlementsController < ApplicationController
   def new
     @settlement = Settlement.new
+    @banks = current_user.banks.all
   end
 
   def create
-    @settlement = Settlement.new(bank_params)
+    @settlement = Settlement.new(settlement_params)
     if @settlement.save
       redirect_to spendings_path
     else
@@ -24,7 +25,7 @@ class SettlementsController < ApplicationController
 
   def update
     @settlement = Settlement.find(params[:id])
-    if @settlement.update(bank_params)
+    if @settlement.update(settlement_params)
       redirect_to settlement_path(@settlement.id)
     else
       render :edit, status: :unprocessable_entity
