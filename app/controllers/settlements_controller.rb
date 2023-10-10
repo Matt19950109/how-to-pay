@@ -22,6 +22,7 @@ class SettlementsController < ApplicationController
 
   def edit
     @settlement = Settlement.find(params[:id])
+    @banks = current_user.banks.all
   end
 
   def update
