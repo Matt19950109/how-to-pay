@@ -32,6 +32,7 @@ class BanksController < ApplicationController
   end
 
   def show
+    @settlements = @bank.settlements
   end
 
   private
