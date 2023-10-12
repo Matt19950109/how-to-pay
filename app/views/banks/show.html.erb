@@ -4,9 +4,17 @@
 <%= @bank.amount_price %>
 </div>
 
+
 <div>
 <%= @bank.name %>
 </div>
+
+<h4>登録された決済方法</h4>
+<ul>
+  <% @settlements.each do |settlement| %>
+    <li><%= settlement.payment %></li>
+  <% end %>
+</ul>
 
 <div>
 <%= link_to '編集', edit_bank_path %>
