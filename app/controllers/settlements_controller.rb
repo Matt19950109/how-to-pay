@@ -1,12 +1,13 @@
 class SettlementsController < ApplicationController
+  before_action :set_settlement, only:[:edit, :update, :show]
+  before_action :set_bank_all, only:[:new, :create, :edit]
+
   def new
     @settlement = Settlement.new
-    @banks = current_user.banks.all
   end
 
   def create
     @settlement = Settlement.new(settlement_params)
-    @banks = current_user.banks.all
     if @settlement.save
       redirect_to spendings_path
     else
@@ -21,12 +22,9 @@ class SettlementsController < ApplicationController
   end
 
   def edit
-    @settlement = Settlement.find(params[:id])
-    @banks = current_user.banks.all
   end
 
   def update
-    @settlement = Settlement.find(params[:id])
     if @settlement.update(settlement_params)
       redirect_to settlement_path(@settlement.id)
     else
@@ -35,11 +33,18 @@ class SettlementsController < ApplicationController
   end
 
   def show
-    @settlement = Settlement.find(params[:id])
   end
 
   private
   def settlement_params
     params.require(:settlement).permit(:payment, :bank_id).merge(user_id: current_user.id)
+  end
+
+  def set_settlement
+    @settlement = Settlement.find(params[:id])
+  end
+
+  def set_bank_all
+    @banks = current_user.banks.all
   end
 end
