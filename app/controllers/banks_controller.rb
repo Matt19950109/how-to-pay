@@ -1,4 +1,5 @@
 class BanksController < ApplicationController
+  before_action :set_bank, only:[:edit, :update, :show]
 
   def new
     @bank = Bank.new
@@ -20,11 +21,9 @@ class BanksController < ApplicationController
   end
 
   def edit
-    @bank = Bank.find(params[:id])
   end
 
   def update
-    @bank = Bank.find(params[:id])
     if @bank.update(bank_params)
       redirect_to bank_path(@bank.id)
     else
@@ -33,12 +32,15 @@ class BanksController < ApplicationController
   end
 
   def show
-    @bank = Bank.find(params[:id])
   end
 
   private
   def bank_params
     params.require(:bank).permit(:amount_price, :name).merge(user_id: current_user.id)
+  end
+
+  def set_bank
+    @bank = Bank.find(params[:id])
   end
 
 
