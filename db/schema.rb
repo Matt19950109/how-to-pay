@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_10_072247) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_12_142211) do
   create_table "banks", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.integer "amount_price", null: false
@@ -30,6 +30,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_072247) do
     t.index ["user_id"], name: "index_settlements_on_user_id"
   end
 
+  create_table "spendings", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "price", null: false
+    t.string "item_name", null: false
+    t.integer "category_id", null: false
+    t.date "start_time", null: false
+    t.bigint "user_id", null: false
+    t.bigint "settlement_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["settlement_id"], name: "index_spendings_on_settlement_id"
+    t.index ["user_id"], name: "index_spendings_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -46,4 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_10_072247) do
   add_foreign_key "banks", "users"
   add_foreign_key "settlements", "banks"
   add_foreign_key "settlements", "users"
+  add_foreign_key "spendings", "settlements"
+  add_foreign_key "spendings", "users"
 end
