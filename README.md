@@ -58,7 +58,7 @@ How to Pay
 
 ### association
 - belongs_to :user
-- has_many   :settlement
+- has_many   :settlements
 
 
 ## settlementsテーブル

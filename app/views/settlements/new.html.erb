@@ -1,0 +1,19 @@
+<h2>決済方法入力ページ</h2>
+
+    <%= form_with model: @settlement, url:settlements_path, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: @settlement %>
+        <div class="form-input">
+            <%= f.label :payment, '支払方法' %>
+            <%= f.text_field :payment, class: "form-control" %>
+        </div>
+        <div class="form_input">
+            <%= f.label :bank_id %>
+            <%= f.collection_select :bank_id, @banks.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
+        </div>
+        <div class="form_action row">
+            <%= f.submit "投稿する", class: "btn btn-primary"%>
+        </div>
+    <% end %>
+
+<%= link_to 'トップページに戻る', spendings_path %>

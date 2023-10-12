@@ -6,6 +6,7 @@ class User < ApplicationRecord
   
   # アソシエーション
   has_many :banks
+  has_many :settlements
   
   # バリデーション
   validates :nickname, presence: true, length: { maximum: 12 }
