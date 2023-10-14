@@ -59,6 +59,14 @@
     <%= link_to '支出を登録', new_spending_path, class:"btn btn-warning fw-bold" %>
   </div>
 
+  <div class="col-md-6 col-xl-4">
+  <ul class="list-group list-group">
+    <% @this_month.each do |key, value| %>
+      <li class="list-group-item"><%= "#{key}: #{value}" %></li>
+    <% end %>
+  </ul>
+  </div>
+
   <div>
   <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-primary" %>
   </div>
