@@ -84,3 +84,4 @@ gem 'jquery-rails'
 gem 'mini_racer'
 gem 'pry-rails'
 gem 'active_hash'
+gem "simple_calendar", "~> 2.0"
