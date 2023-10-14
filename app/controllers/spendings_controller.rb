@@ -16,7 +16,6 @@ class SpendingsController < ApplicationController
 
   def create
     @spending = Spending.new(spending_params)
-    binding.pry
     if @spending.save
       redirect_to spendings_path
     else
