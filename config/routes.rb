@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   resources :settlements, except:[:index]
   
   # 支出管理
-  resources :spendings, only:[:index, :new, :create]
+  resources :spendings
 end
