@@ -8,6 +8,9 @@ class SpendingsController < ApplicationController
     # 決済方法関連
     @settlements = current_user.settlements.all
     @settlement_count = current_user.settlements.count
+
+    # 支出管理関連
+    @spendings = current_user.spendings.all
   end
 
   def new
