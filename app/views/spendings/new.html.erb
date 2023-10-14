@@ -18,7 +18,7 @@
 
         <div class="form_input">
             <%= f.label :settlement_id %>
-            <%= f.collection_select :settlement_id, Settlement.all, :id, :payment, { prompt: '選択してください' }, class: 'form-control' %>
+            <%= f.collection_select :settlement_id, @settlements.all, :id, :payment, { prompt: '選択してください' }, class: 'form-control' %>
         </div>
 
         <div class="time">
@@ -31,5 +31,5 @@
         </div>
     <% end %>
 
-<%= link_to 'トップページに戻る', root_path %>
+<%= link_to 'トップページに戻る', spendings_path %>
 <%= link_to '支出一覧', spendings_path %>

@@ -1,7 +1,9 @@
 @import "bootstrap";
 @import "simple_calendar";
 .simple-calendar {
-  .day {}
+  .day {
+    border: solid #888888;
+  }
 
   .wday-0 {
     background: #ffeaea;
@@ -18,7 +20,7 @@
   }
 
   .today {
-    background: #FFA0A0;
+    background: #FFFF8c;
   }
   .past {}
   .future {}
@@ -31,11 +33,13 @@
   .next-month {
     background-color: #d3d3d3;
   }
-  .current-month {}
+  .current-month {
+    border: solid #888888;
+  }
 
   .has-events {}
 }
 /* ホバーした際の背景色 tableタグにcalender_tableクラスを追記しています*/
-.calendar-table tr td:hover {
+.calendar-table tr td :hover {
   background-color: #FFFF8c;    
 }
