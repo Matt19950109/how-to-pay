@@ -1,6 +1,7 @@
 <h1>支出の登録</h1>
 
     <%= form_with model: @spending, url:spendings_path, local: true do |f| %>
+    <%= render 'shared/error_messages', model: @spending %>
         <div class="form-input">
             <%= f.label :price, '支出額' %>
             <%= f.number_field :price, class: "form-control" %>
