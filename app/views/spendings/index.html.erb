@@ -33,25 +33,27 @@
       </div>
     </div>
   </div>
-
+<br>
   <%#支出管理のカレンダーを反映%>
   <%= month_calendar events: @spendings do |date, spendings| %>
     <%= date.day %>
 
     <% array = [] %>
-    <% spendings.each do |spending| %>
+    <% if spendings.any?%>
+      <% spendings.each do |spending| %>
+        <div>
+          <%= spending.item_name %>
+          <%#= link_to spending.price, spending_path(spending.id) %>円
+        </div>
+        <div>
+        <% array << spending.price %>
+        </div>
+      <% end %>
       <div>
-        <%= spending.item_name %>
-        <%#= link_to spending.price, spending_path(spending.id) %>円
+      合計：<%= array.sum %>円
       </div>
-      <div>
-      <% array << spending.price %>
-      </div>
+    <% else %>
     <% end %>
-    <div>
-    合計：<%= array.sum %>円
-    </div>
-
   <% end %>
   <div>
     <%= link_to '支出を登録', new_spending_path, class:"btn btn-warning fw-bold" %>

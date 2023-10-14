@@ -3,23 +3,39 @@
 .simple-calendar {
   .day {}
 
-  .wday-0 {}
+  .wday-0 {
+    background: #ffeaea;
+    color: #ff505c;
+  }
   .wday-1 {}
   .wday-2 {}
   .wday-3 {}
   .wday-4 {}
   .wday-5 {}
-  .wday-6 {}
+  .wday-6 {
+    background: #d4ebff;
+    color: #5984dc;
+  }
 
-  .today {}
+  .today {
+    background: #FFA0A0;
+  }
   .past {}
   .future {}
 
   .start-date {}
 
-  .prev-month {}
-  .next-month { }
+  .prev-month {
+    background-color: #d3d3d3;
+  }
+  .next-month {
+    background-color: #d3d3d3;
+  }
   .current-month {}
 
   .has-events {}
+}
+/* ホバーした際の背景色 tableタグにcalender_tableクラスを追記しています*/
+.calendar-table tr td:hover {
+  background-color: #FFFF8c;    
 }
