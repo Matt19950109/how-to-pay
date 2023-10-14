@@ -1,0 +1,36 @@
+<h2>支出編集画面</h2>
+
+    <%= form_with model: @spending, local: true do |f| %>
+        <%= render 'shared/error_messages', model: @spending %>
+        <div class="form-input">
+            <%= f.label :price, '支出額' %>
+            <%= f.number_field :price, class: "form-control" %>
+        </div>
+
+        <div class="form_input">
+          <%= f.label :category_id %>
+          <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
+        </div>
+
+        <div class="form-input">
+          <%= f.label :item_name, '品目名' %>
+          <%= f.text_field :item_name, class: "form-control" %>
+        </div>
+
+        <div class="form_input">
+            <%= f.label :settlement_id %>
+            <%= f.collection_select :settlement_id, @settlements.all, :id, :payment, { prompt: '選択してください' }, class: 'form-control' %>
+        </div>
+
+        <div class="time">
+            <%= f.label :start_time, '購入日' %>
+            <%= f.date_field :start_time %>
+        </div>
+
+        <div class="form_action row">
+            <%= f.submit "投稿する", class: "btn btn-primary"%>
+        </div>
+    <% end %>
+
+<%= link_to 'トップページに戻る', spendings_path %>
+<%= link_to '支出一覧', spendings_path %>

@@ -43,7 +43,7 @@
       <% spendings.each do |spending| %>
         <div>
           <%= spending.item_name %>
-          <%#= link_to spending.price, spending_path(spending.id) %>円
+          <%= link_to spending.price, spending_path(spending.id) %>円
         </div>
         <div>
         <% array << spending.price %>
