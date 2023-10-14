@@ -9,4 +9,23 @@ class SpendingsController < ApplicationController
     @settlements = current_user.settlements.all
     @settlement_count = current_user.settlements.count
   end
+
+  def new
+    @spending = Spending.new
+  end
+
+  def create
+    @spending = Spending.new(spending_params)
+    binding.pry
+    if @spending.save
+      redirect_to spendings_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+  def spending_params
+    params.require(:spending).permit(:price, :item_name, :category_id, :start_time, :settlement_id).merge(user_id: current_user.id)
+  end
 end
