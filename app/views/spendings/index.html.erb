@@ -61,7 +61,15 @@
 
   <div class="col-md-6 col-xl-4">
   <ul class="list-group list-group">
-    <% @this_month.each do |key, value| %>
+    <% @this_month_bank.each do |key, value| %>
+      <li class="list-group-item"><%= "#{key}: #{value}" %></li>
+    <% end %>
+  </ul>
+  </div>
+
+  <div class="col-md-6 col-xl-4">
+  <ul class="list-group list-group">
+    <% @this_month_payment.each do |key, value| %>
       <li class="list-group-item"><%= "#{key}: #{value}" %></li>
     <% end %>
   </ul>

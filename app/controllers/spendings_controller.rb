@@ -13,7 +13,8 @@ class SpendingsController < ApplicationController
 
     # 支出管理関連
     @spendings = current_user.spendings.all
-    @this_month = current_user.spendings.where(start_time: [Date.today.all_month]).joins(:settlement).group("settlements.payment").sum(:price)
+    @this_month_bank = current_user.spendings.where(start_time: [Date.today.all_month]).joins(settlement: :bank).group("name").sum(:price)
+    @this_month_payment = current_user.spendings.where(start_time: [Date.today.all_month]).joins(:settlement).group("settlements.payment").sum(:price)
   end
 
   def new
