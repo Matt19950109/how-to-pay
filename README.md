@@ -79,7 +79,7 @@ How to Pay
 | ------------------ | ---------- | ------------------------------ |
 | price              | integer    | null: false                    |
 | item_name          | string     | null: false                    |
-| category           | integer    | null: false                    |
+| category_id        | integer    | null: false                    |
 | start_time         | date       | null: false                    |
 | user               | references | null: false, foreign_key: true |
 | settlement         | references | null: false, foreign_key: true |

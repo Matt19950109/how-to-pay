@@ -1,0 +1,35 @@
+<h1>支出詳細画面</h1>
+<div>
+銀行名
+<%#= @spending.bank.name%>
+</div>
+
+<div>
+決済方法名
+<%= @spending.settlement.payment %>
+</div>
+
+<div>
+支出名
+<%= @spending.item_name %>
+</div>
+
+<div>
+金額
+<%= @spending.price %>
+</div>
+
+<div>
+<%= link_to '編集', edit_spending_path %>
+</div>
+
+<div>
+<%= image_tag @spending.image.variant(resize: '500x500'), class: 'message-image' if @spending.image.attached? %>
+</div>
+
+<div>
+<%= link_to '削除', spending_path, data: { turbo_method: :delete } %>
+</div>
+<div>
+<%= link_to 'トップページに戻る', spendings_path %>
+</div>
