@@ -55,7 +55,7 @@
       <% spendings.each do |spending| %>
       <% array << spending.price %>
       <% end %>
-        <div>
+        <div class="text-danger fw-bold">
         <%= array.sum %>円
         </div>
     <% else %>
@@ -66,6 +66,11 @@
   <div>
     <%= link_to '支出を登録', new_spending_path, class:"btn btn-warning fw-bold" %>
   </div>
+
+  <br>
+  <%#今月の支出の総額表示%>
+  <div class="text-danger text-decoration-underline fs-4 fw-bolder">支出総額（今月）：<%= @total.sum(:price)[Date.today.month] %>円</div>
+
 
   <div class="col-md-6 col-xl-4">
   <ul class="list-group list-group">
