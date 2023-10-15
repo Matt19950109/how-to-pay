@@ -24,6 +24,10 @@
 </div>
 
 <div>
+<%= image_tag @spending.image.variant(resize: '500x500'), class: 'message-image' if @spending.image.attached? %>
+</div>
+
+<div>
 <%= link_to '削除', spending_path, data: { turbo_method: :delete } %>
 </div>
 <div>

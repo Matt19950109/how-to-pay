@@ -27,6 +27,11 @@
             <%= f.date_field :start_time %>
         </div>
 
+        <label class="form-image">
+         <span class="image-file">画像</span>
+         <%= f.file_field :image, class: 'hidden' %>
+        </label>
+
         <div class="form_action row">
             <%= f.submit "投稿する", class: "btn btn-primary"%>
         </div>
