@@ -2,6 +2,7 @@ class Spending < ApplicationRecord
   # アソシエーション
   belongs_to :user
   belongs_to :settlement
+  has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
