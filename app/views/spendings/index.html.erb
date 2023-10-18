@@ -1,6 +1,7 @@
 <h1>支出一覧画面</h1>
 
-<div class = container>
+<div class = container>  <!-- 全体を囲むコンテナ -->
+
   <div class="row">
     <%#銀行名登録のボタン%>
     <div class="hstack gap-2 col-4">
@@ -20,11 +21,11 @@
     <%#決済方法登録のボタン%>
     <div class="hstack gap-2 col-4 offset-1">
       <div>
-        <%= link_to '決済方法を登録', new_settlement_path, class: "btn btn-outline-danger fw-bold" %>
+        <%= link_to '決済方法を登録', new_settlement_path, class: "btn btn-outline-info fw-bold" %>
       </div>
 
       <div class="dropdown">
-        <button class="btn btn-outline-danger dropdown-toggle fw-bold" data-bs-toggle="dropdown">登録済の決済方法<span class="badge bg-danger text-white ms-2"><%= @settlement_count %></span></button>
+        <button class="btn btn-outline-info dropdown-toggle fw-bold" data-bs-toggle="dropdown">登録済の決済方法<span class="badge bg-info text-white ms-2"><%= @settlement_count %></span></button>
         <ul class="dropdown-menu">
           <% @settlements.each do |settlement| %>
             <li><%= link_to settlement.payment, settlement_path(settlement.id), class:"dropdown-item list-group-item-light text-decoration-none" %></li>
@@ -33,7 +34,7 @@
       </div>
     </div>
   </div>
-<br>
+  <br>
   <%#支出管理のカレンダーを反映%>
   <%= month_calendar events: @spendings do |date, spendings| %>
     <%= date.day %>
@@ -43,7 +44,7 @@
     <% if spendings.any?%>
       <%#月ごとの支出をドロップダウンで表示%>
       <div class="dropdown">
-        <button class="btn btn-outline-warning btn-sm dropdown-toggle fw-bold" data-bs-toggle="dropdown">支出の詳細</button>
+        <button class="btn btn-outline-success btn-sm dropdown-toggle fw-bold" data-bs-toggle="dropdown">支出の詳細</button>
         <ul class="dropdown-menu">
           <% spendings.each do |spending| %>
           <li><%= link_to spending.price, spending_path(spending.id), class:"dropdown-item list-group-item-light text-decoration-none "%></li>
@@ -55,7 +56,7 @@
       <% spendings.each do |spending| %>
       <% array << spending.price %>
       <% end %>
-        <div>
+        <div class="text-danger fw-bold">
         <%= array.sum %>円
         </div>
     <% else %>
@@ -64,8 +65,13 @@
   <% end %>
 
   <div>
-    <%= link_to '支出を登録', new_spending_path, class:"btn btn-warning fw-bold" %>
+    <%= link_to '支出を登録', new_spending_path, class:"btn btn-success fw-bold" %>
   </div>
+
+  <br>
+  <%#今月の支出の総額表示%>
+  <div class="text-danger text-decoration-underline fs-4 fw-bolder">支出総額（今月）：<%= @total.sum(:price)[Date.today.month] %>円</div>
+
 
   <div class="col-md-6 col-xl-4">
   <ul class="list-group list-group">

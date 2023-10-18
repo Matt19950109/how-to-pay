@@ -1,41 +1,64 @@
-<h2>支出編集画面</h2>
+<div class="container">  <!-- 全体を囲むコンテナ -->
+    <div class="row">
+    <h4 class="text-md-end col-md-4 mb-3">支出の登録</h4>
+    </div>
 
     <%= form_with model: @spending, local: true do |f| %>
-        <%= render 'shared/error_messages', model: @spending %>
-        <div class="form-input">
-            <%= f.label :price, '支出額' %>
-            <%= f.number_field :price, class: "form-control" %>
-        </div>
 
-        <div class="form_input">
-          <%= f.label :category_id %>
-          <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: '選択してください' }, class: 'form-control' %>
-        </div>
+    <%= render 'shared/error_messages', model: @spending %>
 
-        <div class="form-input">
-          <%= f.label :item_name, '品目名' %>
-          <%= f.text_field :item_name, class: "form-control" %>
+      <div class="row gx-2 mb-4">  <!-- 支出入力フォーム -->
+        <%= f.label :price, '支出額', class: "col-md-3 col-form-label text-md-end fw-bold" %>
+        <div class="col-md-5">
+          <%= f.number_field :price, class: "form-control" %>
+          <div class="form-text">※半角数字を入力してください</div>
         </div>
+      </div>
 
-        <div class="form_input">
-            <%= f.label :settlement_id %>
-            <%= f.collection_select :settlement_id, @settlements.all, :id, :payment, { prompt: '選択してください' }, class: 'form-control' %>
+      <div class="row gx-2 mb-4">  <!-- カテゴリー入力フォーム -->
+      <%= f.label :category_id, 'カテゴリー選択', class: "col-md-3 col-form-label text-md-end fw-bold" %>
+      <div class="col-md-4">
+        <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: '-- 選択してください --' }, class: 'form-control form-select' %>
+      </div>
+      </div>
+
+      <div class="row gx-2 mb-4">  <!-- 物品名入力フォーム -->
+      <%= f.label :item_name, '品目名', class: "col-md-3 col-form-label text-md-end fw-bold"%>
+      <div class="col-md-5">
+        <%= f.text_field :item_name, class: "form-control" %>
+      </div>
+      </div>
+
+      <div class="row gx-2 mb-4">  <!-- 決済方法選択フォーム -->
+      <%= f.label :settlement_id, '決済方法選択' , class: "col-md-3 col-form-label text-md-end fw-bold"%>
+      <div class="col-md-4">
+        <%= f.collection_select :settlement_id, @settlements.all, :id, :payment, { prompt: '-- 選択してください --' }, class: 'form-control form-select' %>
+        <div class="form-text">※STEP②で登録した決済方法が表示されます</div>
+      </div>
+      </div>
+
+      <div class="row gx-2 mb-4">  <!-- 購入日入力フォーム -->
+        <%= f.label :start_time, '購入日', class: "col-md-3 col-form-label text-md-end fw-bold" %>
+        <div class="col-md-3">
+          <%= f.date_field :start_time, class: 'form-control-lg' %>
         </div>
+      </div>
 
-        <div class="time">
-            <%= f.label :start_time, '購入日' %>
-            <%= f.date_field :start_time %>
+      <label class="row gx-2 mb-2">  <!-- 写真アップロード -->
+      <span class="col-md-3 col-form-label text-md-end fw-bold">画像を貼付（任意）</span>
+      <div class="col-md-3">
+        <%= f.file_field :image, class: 'form-control' %>
+      </div>
+      </label>
+
+      <div class="row">  <!-- 登録ボタン -->
+        <div class="col-md-8 text-end">
+        <%= f.submit "支出を登録する", class: "btn btn-warning fw-bold"%>
         </div>
-
-        <label class="form-image">
-         <span class="image-file">画像</span>
-         <%= f.file_field :image, class: 'hidden' %>
-        </label>
-
-        <div class="form_action row">
-            <%= f.submit "投稿する", class: "btn btn-primary"%>
-        </div>
+      </div>
     <% end %>
 
 <%= link_to 'トップページに戻る', spendings_path %>
 <%= link_to '支出一覧', spendings_path %>
+
+<div>

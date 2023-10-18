@@ -1,28 +1,33 @@
-<h1>登録銀行の詳細</h1>
+<div class="container">  <!-- 全体を囲むコンテナ -->
+<dl>
+  <br>
 
-<div>
-<%= @bank.amount_price %>
-</div>
+  <!-- データリスト -->
+  <dt class="fs-5 fw-light">銀行名</dt>
+  <dd class="fs-3 fw-bold mb-4"><%= @bank.name %></dd>
+  <hr>
+  <hr>
 
+  <dt class="fs-5 fw-light">目標設定金額</dt>
+  <dd class="fs-3 fw-bold mb-4"><%= @bank.amount_price %></dd>
+  <hr>
+  <hr>
 
-<div>
-<%= @bank.name %>
-</div>
+  <h4 class="fs-5 fw-light">登録されている決済方法</h4>
+  <ul class="mb-4">
+    <% @settlements.each do |settlement| %>
+      <li class="fs-4 fw-bold list-unstyled"><%= settlement.payment %></li>
+    <% end %>
+  </ul>
+</dl>
+<hr>
+<hr>
 
-<h4>登録された決済方法</h4>
-<ul>
-  <% @settlements.each do |settlement| %>
-    <li><%= settlement.payment %></li>
-  <% end %>
-</ul>
+    <!-- ボタングループ -->
+  <div class="d-flex flex-column flex-md-row align-items-md-end gap-2">
+    <%= link_to '編集', edit_bank_path, class: "btn btn-outline-secondary fw-bold"%>
+    <%= link_to '削除', bank_path, data: { turbo_method: :delete }, class: "btn btn-outline-secondary fw-bold" %>
+    <%= link_to '支出一覧ページに戻る', spendings_path, class: "btn btn-outline-secondary fw-bold" %>
+  </div>
 
-<div>
-<%= link_to '編集', edit_bank_path %>
-</div>
-
-<div>
-<%= link_to '削除', bank_path, data: { turbo_method: :delete } %>
-</div>
-<div>
-<%= link_to 'トップページに戻る', spendings_path %>
 </div>

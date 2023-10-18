@@ -1,6 +1,6 @@
 class SettlementsController < ApplicationController
   before_action :set_settlement, only:[:edit, :update, :show]
-  before_action :set_bank_all, only:[:new, :create, :edit]
+  before_action :set_bank_all, only:[:new, :create, :edit, :update]
 
   def new
     @settlement = Settlement.new
