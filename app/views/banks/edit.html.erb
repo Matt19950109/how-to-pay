@@ -1,23 +1,29 @@
 <div class="container">  <!-- 全体を囲むコンテナ -->
 
-  <h3 class="mb-4">紐づけている銀行名の編集</h3>
+  <div class="row">
+  <h4 class="text-secondary text-md-end col-md-6 my-4">銀行名の編集</h4>
+  </div>
 
   <%= form_with model: @bank, local: true do |f| %>
     <%= render 'shared/error_messages', model: @bank %>
     
-      <div class='row gx-2 mb-4'>
+      <div class='row gx-2 mb-5'>  <!-- 設定金額入力フォーム -->
         <%= f.label :設定金額 , class: "col-md-3 col-form-label text-md-end fw-bold" %>
         <div class="col-md-5">
           <%= f.number_field :amount_price, class:"form-control" %>
+          <div class="form-text">※半角数字で入力してください</div>
         </div>
       </div>
-      <div class='row mb-4'>
+
+      <div class='row gx-2 md-5 my-4'>  <!-- 銀行名入力フォーム -->
         <%= f.label :銀行名, class: "col-md-3 col-form-label text-md-end fw-bold" %>
         <div class="col-md-5">
           <%= f.text_field :name, class:"form-control" %>
-        </div>
+        <div class="form-text">※登録予定の決済方法に紐づく銀行名を入力してください</div>
       </div>
-      <div class="row">
+      </div>
+
+      <div class="row">  <!-- 登録ボタン -->
         <div class="col-md-8 text-end">
           <%= f.submit "銀行名を登録する", class: "btn btn-secondary" %>
         </div>
