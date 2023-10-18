@@ -14,7 +14,6 @@ class SpendingsController < ApplicationController
     # 支出管理関連
     @spendings = current_user.spendings.all
     #@spendings_count = current_user.spendings.where(start_time: [Date.today.all_month]).group(:start_time).count
-    @total = current_user.spendings.group("MONTH(start_time)")
     @this_month_bank = current_user.spendings.where(start_time: [Date.today.all_month]).joins(settlement: :bank).group("name").sum(:price)
     @this_month_payment = current_user.spendings.where(start_time: [Date.today.all_month]).joins(:settlement).group("settlements.payment").sum(:price)
   end
