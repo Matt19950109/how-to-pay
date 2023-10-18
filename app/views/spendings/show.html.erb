@@ -1,35 +1,48 @@
-<h1>支出詳細画面</h1>
-<div>
-銀行名
-<%#= @spending.bank.name%>
-</div>
+<div class="container">  <!-- 全体を囲むコンテナ -->
 
-<div>
-決済方法名
-<%= @spending.settlement.payment %>
-</div>
+  <dl>
+    <br>
 
-<div>
-支出名
-<%= @spending.item_name %>
-</div>
+    <!-- データリスト -->
+    <dt class="fs-5 fw-light">銀行名</dt>
+    <%#= @spending.bank.name%>
+    <hr>
+    <hr>
 
-<div>
-金額
-<%= @spending.price %>
-</div>
+    <dt class="fs-5 fw-light">決済方法名</dt>
+    <dd class="fs-4 fw-bold mb-4"><%= @spending.settlement.payment %></dd>
+    <hr>
+    <hr>
 
-<div>
-<%= link_to '編集', edit_spending_path %>
-</div>
+    <% if @spending.image.present? %>  <!-- 写真が存在する場合のみ表示されるように設定 -->
+      <dt class="fs-5 fw-light">添付写真</dt>
+      <dd class="fs-4 fw-bold mb-4"><%= image_tag @spending.image.variant(resize: '500x500'), class: 'message-image' if @spending.image.attached? %></dd>
+      <hr>
+      <hr>
+    <% else %>
+    <% end %>
 
-<div>
-<%= image_tag @spending.image.variant(resize: '500x500'), class: 'message-image' if @spending.image.attached? %>
-</div>
+    <dt class="fs-5 fw-light">支出名</dt>
+    <dd class="fs-4 fw-bold mb-4"><%= @spending.item_name %></dd>
+    <hr>
+    <hr>
 
-<div>
-<%= link_to '削除', spending_path, data: { turbo_method: :delete } %>
-</div>
-<div>
-<%= link_to 'トップページに戻る', spendings_path %>
+    <dt class="fs-5 fw-light">金額</dt>
+    <dd class="fs-4 fw-bold mb-4"><%= @spending.price %></dd>
+    <hr>
+    <hr>
+
+    <dt class="fs-5 fw-light">購入日</dt>
+    <dd class="fs-4 fw-bold mb-4"><%= @spending.start_time %></dd>
+    <hr>
+    <hr>
+  </dl>
+
+  <!-- ボタングループ -->
+  <div class="d-flex flex-column flex-md-row align-items-md-end gap-2">
+    <%= link_to '編集', edit_spending_path, class: "btn btn-outline-success fw-bold" %>
+    <%= link_to '削除', spending_path, data: { turbo_method: :delete }, class: "btn btn-outline-success fw-bold" %>
+    <%= link_to '支出一覧ページに戻る', spendings_path, class: "btn btn-outline-success fw-bold" %>
+  </div>
+
 </div>

@@ -1,20 +1,24 @@
-<h1>決済方法の詳細画面</h1>
+<div class="container">  <!-- 全体を囲むコンテナ -->
+  <dl>
+    <br>
 
-<div>
-<%= @settlement.payment%>
-</div>
+    <!-- データリスト -->
+    <dt class="fs-5 fw-light">決済方法</dt>
+    <dd class="fs-3 fw-bold mb-4"><%= @settlement.payment %><dd>
+    <hr>
+    <hr>
 
-<div>
-<%= @settlement.bank.name %>
-</div>
+    <dt class="fs-5 fw-light">紐づいている銀行名</dt>
+    <dd class="fs-3 fw-bold mb-4"><%= @settlement.bank.name %></dd>
+    <hr>
+    <hr>
+    
+  </dl>
 
-<div>
-<%= link_to '編集', edit_settlement_path %>
-</div>
-
-<div>
-<%= link_to '削除', settlement_path, data: { turbo_method: :delete } %>
-</div>
-<div>
-<%= link_to 'トップページに戻る', spendings_path %>
+  <!-- ボタングループ -->
+  <div class="d-flex flex-column flex-md-row align-items-md-end gap-2">
+    <%= link_to '編集', edit_settlement_path, class: "btn btn-outline-info fw-bold" %>
+    <%= link_to '削除', settlement_path, data: { turbo_method: :delete }, class: "btn btn-outline-info fw-bold" %>
+    <%= link_to '支出一覧ページに戻る', spendings_path, class: "btn btn-outline-info fw-bold" %>
+  </div>
 </div>
