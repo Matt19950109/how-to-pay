@@ -2,11 +2,10 @@
 
 <div class = container>  <!-- 全体を囲むコンテナ -->
 
-  <div class="row">
+  <div class="d-md-flex flex-wrap gap-4 mt-md-4">
     <%#銀行名登録のボタン%>
-    <div class="hstack gap-2 col-4">
+    <div class="d-flex gap-2 mb-4">
       <%= link_to '銀行名を登録', new_bank_path, class: "btn btn-outline-secondary fw-bold" %>
-
 
       <div class="dropdown">
         <button class="btn btn-outline-secondary dropdown-toggle fw-bold" data-bs-toggle="dropdown">登録済の銀行<span class="badge bg-secondary text-white ms-2"><%= @bank_count %></span></button>
@@ -19,7 +18,7 @@
     </div>
 
     <%#決済方法登録のボタン%>
-    <div class="hstack gap-2 col-4 offset-1">
+    <div class="d-flex gap-2">
       <div>
         <%= link_to '決済方法を登録', new_settlement_path, class: "btn btn-outline-info fw-bold" %>
       </div>
@@ -70,23 +69,38 @@
 
   <br>
   <%#今月の支出の総額表示%>
-  <%#div class="text-danger text-decoration-underline fs-4 fw-bolder">支出総額（今月）：<%= @total.sum(:price)[Date.today.month] %>円</div>
+  <%#= @spendings_sum %>
 
+  <div class="d-md-flex flex-wrap gap-4 mb-md-4">
+    <%#銀行名ごとの支出額表示%>
+    <div class="col-md-4"> 
+      <table class="table caption-top table-bordered border-dark mb-md-4">
+        <caption class="fs-4 fw-bold">銀行ごとの支出額（今月）</caption>
+        <thead>
+          <tr class="table-secondary"><th>銀行名</th><th>今月の支出額</th></tr>
+        </thead>
+        <tbody>
+          <% @this_month_bank.each do |key, value| %>
+            <tr><td><%= "#{key}" %></td><td><%= "#{value}" %></td></tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
 
-  <div class="col-md-6 col-xl-4">
-  <ul class="list-group list-group">
-    <% @this_month_bank.each do |key, value| %>
-      <li class="list-group-item"><%= "#{key}: #{value}" %></li>
-    <% end %>
-  </ul>
-  </div>
-
-  <div class="col-md-6 col-xl-4">
-  <ul class="list-group list-group">
-    <% @this_month_payment.each do |key, value| %>
-      <li class="list-group-item"><%= "#{key}: #{value}" %></li>
-    <% end %>
-  </ul>
+    <%#決済方法ごとの支出額の表示%>
+    <div class="col-md-4"> 
+      <table class="table caption-top table-bordered border-dark">
+        <caption class="fs-4 fw-bold">決済方法ごとの支出額（今月）</caption>
+        <thead>
+          <tr class="table-info border"><th>決済方法</th><th>今月の支出額</th></tr>
+        </thead>
+        <tbody>
+          <% @this_month_payment.each do |key, value| %>
+            <tr><td><%= "#{key}" %></td><td><%= "#{value}" %></td></tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 
   <div>
