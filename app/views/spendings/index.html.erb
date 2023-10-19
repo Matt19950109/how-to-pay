@@ -68,10 +68,22 @@
   </div>
 
   <br>
-  <%#今月の支出の総額表示%>
-  <%#= @spendings_sum %>
 
-  <div class="d-md-flex flex-wrap gap-4 mb-md-4">
+  <div class="row d-md-flex justify-content-between flex-wrap gap-4 mb-md-4"> <!-- 今月のカテゴリ別支出のテーブル -->
+
+    <%#今月の支出の総額表示%>
+    <div class="col-md-3">
+      <table class="table caption-top table-bordered border-dark mb-md-4">
+        <caption class="fs-4 fw-bold">支出額の総額（今月）</caption>
+        <thead>
+          <tr class="table-success"><th>総支出額（今月）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><%= @spendings_sum %></td></tr>
+        </tbody>
+      </table>
+    </div>
+
     <%#銀行名ごとの支出額表示%>
     <div class="col-md-4"> 
       <table class="table caption-top table-bordered border-dark mb-md-4">
