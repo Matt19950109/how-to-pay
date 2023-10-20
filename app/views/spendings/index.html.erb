@@ -54,7 +54,7 @@
     <% if spendings.any?%>
       <%#月ごとの支出をドロップダウンで表示%>
       <div class="dropdown">
-        <button class="btn btn-outline-success btn-sm dropdown-toggle fw-bold" data-bs-toggle="dropdown"><span class="badge bg-success text-white"><%= count.length %></span></button>
+        <button class="btn btn-outline-success btn-sm dropdown-toggle fw-bold" data-bs-toggle="dropdown"><%= count.length %>件</button>
         <ul class="dropdown-menu">
           <% spendings.each do |spending| %>
           <li><%= link_to spending.price, spending_path(spending.id), class:"dropdown-item list-group-item-light text-decoration-none "%></li>
