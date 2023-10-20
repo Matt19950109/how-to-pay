@@ -1,8 +1,7 @@
-<h1>支出一覧画面</h1>
 
 <div class = container>  <!-- 全体を囲むコンテナ -->
 
-  <div class="d-md-flex flex-wrap gap-4 mt-md-4">
+  <div class="d-md-flex justify-content-between flex-wrap gap-4 mt-md-4">
     <%#銀行名登録のボタン%>
     <div class="d-flex gap-2 mb-4">
       <%= link_to '銀行名を登録', new_bank_path, class: "btn btn-outline-secondary fw-bold" %>
@@ -18,7 +17,7 @@
     </div>
 
     <%#決済方法登録のボタン%>
-    <div class="d-flex gap-2">
+    <div class="d-flex gap-2 mb-4">
       <div>
         <%= link_to '決済方法を登録', new_settlement_path, class: "btn btn-outline-info fw-bold" %>
       </div>
@@ -32,6 +31,11 @@
         </ul>  
       </div>
     </div>
+
+    <%#支出登録のボタン%>
+    <div>
+      <%= link_to '支出を登録', new_spending_path, class:"btn btn-success fw-bold" %>
+    </div>
   </div>
   <br>
   <%#支出管理のカレンダーを反映%>
@@ -39,11 +43,18 @@
     <%= date.day %>
 
     <% array = [] %>
+    <% count = []%>
+
+    <%#日ごとの支出件数をカウント%>
+      <% spendings.each do |spending| %>
+        <% count << spending %>
+      <%end%>
+
     <%#支出データがある場合%>
     <% if spendings.any?%>
       <%#月ごとの支出をドロップダウンで表示%>
       <div class="dropdown">
-        <button class="btn btn-outline-success btn-sm dropdown-toggle fw-bold" data-bs-toggle="dropdown">支出の詳細</button>
+        <button class="btn btn-outline-success btn-sm dropdown-toggle fw-bold" data-bs-toggle="dropdown"><span class="badge bg-success text-white"><%= count.length %></span></button>
         <ul class="dropdown-menu">
           <% spendings.each do |spending| %>
           <li><%= link_to spending.price, spending_path(spending.id), class:"dropdown-item list-group-item-light text-decoration-none "%></li>
@@ -53,7 +64,7 @@
 
       <%#日ごとの合計金額を表示%>
       <% spendings.each do |spending| %>
-      <% array << spending.price %>
+        <% array << spending.price %>
       <% end %>
         <div class="text-danger fw-bold">
         <%= array.sum %>円
@@ -62,15 +73,11 @@
     <%#支出データがない場合は空欄に設定%>
     <% end %>
   <% end %>
-
-  <div>
-    <%= link_to '支出を登録', new_spending_path, class:"btn btn-success fw-bold" %>
-  </div>
+  <div class="fs-light mb-4">※各ドロップダウンの支出件数をクリックすると詳細が確認できます</div>
 
   <br>
 
   <div class="row d-md-flex justify-content-between flex-wrap gap-4 mb-md-4"> <!-- 今月のカテゴリ別支出のテーブル -->
-
     <%#今月の支出の総額表示%>
     <div class="col-md-3">
       <table class="table caption-top table-bordered border-dark mb-md-4">
