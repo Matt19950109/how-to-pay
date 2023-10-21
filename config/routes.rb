@@ -15,5 +15,9 @@ Rails.application.routes.draw do
   resources :settlements, except:[:index]
   
   # 支出管理
-  resources :spendings
+  resources :spendings do
+    collection do
+      get 'search'
+    end
+  end
 end
