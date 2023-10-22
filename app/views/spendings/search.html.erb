@@ -1,0 +1,85 @@
+<div class="container"> <!-- 全体を囲むコンテナ -->
+  <h3 class="my-3">支出検索ページ</h3>
+  <hr>
+
+    <div class="col-7 border-1">
+      <%= search_form_for @q, url: search_spendings_path do |f| %>
+
+          <%#決済手段フォーム%>
+          <div class="form-check-inline mb-5" >
+            <%= f.label :settlement_id_in, '決済手段名', class: "form-check-label text-md-start fw-bold fs-5 mb-2" %>
+            <br>
+            <div>
+            <%= f.collection_check_boxes(:settlement_id_in, @settlements.all, :id, :payment, class: "form-check-input") %>
+            </div>
+          </div>
+
+        <%#支出名フォーム%>
+        <div class="mb-5">
+          <%= f.label :item_name_cont, '支出名', class:"form-label fw-bold fs-5 mb-2" %>
+          <br>
+          <div class="col-md-4"><%= f.text_field :item_name_cont, placeholder: '支出名を入力', class:"form-control" %></div>
+        </div>
+
+        <%#カテゴリフォーム%>
+        <div class="mb-5">
+          <%= f.label :category_id_in, 'カテゴリ', class:"form-label fw-bold fs-5 mb-2" %>
+          <br>
+          <%= f.collection_check_boxes(:category_id_in, Category.all, :id, :name) %>
+        </div>
+
+        <%#購入日フォーム%>
+        <div class="mb-5">
+          <%= f.label :start_time_lteq, '購入日', class:"form-label fw-bold fs-5 mb-2"%>
+          <br>
+          <div class="row">          
+            <div class="col-md-4"><%= f.date_field :start_time_gteq, class: 'form-control' %></div>～
+            <div class="col-md-4"><%= f.date_field :start_time_lteq, class: 'form-control' %></div>
+          </div>
+        </div>
+
+        <%#価格フォーム%>
+        <div class="mb-5">
+          <%= f.label :price_gteq, '価格', class:"form-label fw-bold fs-5 mb-2"%>
+          <br>
+          <div class="row">
+            <div class="col-md-4"><%= f.number_field :price_gteq, placeholder:'円以上', class: 'form-control' %></div>～
+            <div class="col-md-4"><%= f.number_field :price_lteq, placeholder:'円以下', class: 'form-control' %></div>
+          </div>
+        </div>
+
+        <%#検索ボタン%>
+        <%= f.submit '検索', class: "btn btn-outline-success fw-bold mb-5" %>
+      <% end %>
+    </div>
+    <hr>
+
+
+    <div class="col-md-8">
+      <table class="table caption-top text-nowrap table-bordered border-dark">
+        <caption class="fw-bold">検索結果</caption>
+        <thead class="text-center table-success border-dark">
+          <tr><th>購入日</th><th>決済方法</th><th>品目名</th><th>カテゴリ</th><th>支出額</th><th>添付写真の有無</th><th>詳細確認</th></tr>
+        </thead>
+        <tbody class="text-center">
+          <% @spendings.each do |spending| %>
+                <tr><td><%= spending.start_time %></td>
+                <td><%= spending.settlement.payment%></td>
+                <td><%= spending.item_name %></td>
+                <td><%= spending.category.name %></td>                
+                <td><%= spending.price %></td>
+
+                <%# 添付写真の有無で表示を変更%>
+                <td><% if spending.image.present? %>
+                    〇
+                    <% else %>
+                    ×
+                    <% end %></td>
+                <td><%= link_to '詳細', spending_path(spending.id)%></td></tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+  <%= link_to '支出一覧ページに戻る', spendings_path, class: "col-md-4 btn btn-outline-success fw-bold mb-5" %>
+</div>

@@ -52,6 +52,11 @@ class SpendingsController < ApplicationController
     @banks = current_user.banks.all
   end
 
+  def search
+    @q = current_user.spendings.ransack(params[:q])
+    @spendings = @q.result.order(start_time: :desc)
+  end
+
   private
   def spending_params
     params.require(:spending).permit(:price, :item_name, :category_id, :start_time, :settlement_id, :image).merge(user_id: current_user.id)

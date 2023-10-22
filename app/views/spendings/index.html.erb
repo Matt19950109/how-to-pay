@@ -7,12 +7,12 @@
       <%= link_to '銀行名を登録', new_bank_path, class: "btn btn-outline-secondary fw-bold" %>
 
       <div class="dropdown">
-        <button class="btn btn-outline-secondary dropdown-toggle fw-bold" data-bs-toggle="dropdown">登録済の銀行<span class="badge bg-secondary text-white ms-2"><%= @bank_count %></span></button>
+        <button class="btn btn-outline-secondary dropdown-toggle fw-bold" data-bs-toggle="dropdown">登録した銀行<span class="badge bg-secondary text-white ms-2"><%= @bank_count %></span></button>
         <ul class="dropdown-menu">
           <% @banks.each do |bank| %>
               <li><%= link_to bank.name, bank_path(bank.id), class: "dropdown-item list-group-item-light text-decoration-none" %></li>
           <% end %>
-        </ul>  
+        </ul>
       </div>
     </div>
 
@@ -23,7 +23,7 @@
       </div>
 
       <div class="dropdown">
-        <button class="btn btn-outline-info dropdown-toggle fw-bold" data-bs-toggle="dropdown">登録済の決済方法<span class="badge bg-info text-white ms-2"><%= @settlement_count %></span></button>
+        <button class="btn btn-outline-info dropdown-toggle fw-bold" data-bs-toggle="dropdown">登録した決済方法<span class="badge bg-info text-white ms-2"><%= @settlement_count %></span></button>
         <ul class="dropdown-menu">
           <% @settlements.each do |settlement| %>
             <li><%= link_to settlement.payment, settlement_path(settlement.id), class:"dropdown-item list-group-item-light text-decoration-none" %></li>
@@ -32,9 +32,15 @@
       </div>
     </div>
 
-    <%#支出登録のボタン%>
-    <div>
-      <%= link_to '支出を登録', new_spending_path, class:"btn btn-success fw-bold" %>
+    <div class="d-flex gap-2 mb-4">
+      <%#支出登録のボタン%>
+      <div>
+        <%= link_to '支出を登録', new_spending_path, class:"btn btn-success fw-bold" %>
+      </div>
+      <%#支出検索のボタン%>
+      <div>
+        <%= link_to '過去の支出を検索', search_spendings_path, class:"btn btn-success fw-bold" %>
+      </div>
     </div>
   </div>
   <br>
@@ -67,7 +73,7 @@
         <% array << spending.price %>
       <% end %>
         <div class="text-danger fw-bold">
-        <%= array.sum %>円
+        ￥<%= array.sum %>
         </div>
     <% else %>
     <%#支出データがない場合は空欄に設定%>
