@@ -3,6 +3,7 @@ class Spending < ApplicationRecord
   belongs_to :user
   belongs_to :settlement
   has_one_attached :image
+  has_one :bank, through: :settlement
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category

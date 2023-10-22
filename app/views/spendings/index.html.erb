@@ -88,8 +88,8 @@
     <div class="col-md-3">
       <table class="table caption-top table-bordered border-dark mb-md-4">
         <caption class="fs-4 fw-bold">支出額の総額（今月）</caption>
-        <thead>
-          <tr class="table-success"><th>総支出額（今月）</th></tr>
+        <thead class="table-success border-dark">
+          <tr><th>今月の支出額</th></tr>
         </thead>
         <tbody>
           <tr><td><%= @spendings_sum %></td></tr>
@@ -101,8 +101,8 @@
     <div class="col-md-4"> 
       <table class="table caption-top table-bordered border-dark mb-md-4">
         <caption class="fs-4 fw-bold">銀行ごとの支出額（今月）</caption>
-        <thead>
-          <tr class="table-secondary"><th>銀行名</th><th>今月の支出額</th></tr>
+        <thead class="table-secondary border-dark">
+          <tr><th>銀行名</th><th>支出額</th></tr>
         </thead>
         <tbody>
           <% @this_month_bank.each do |key, value| %>
@@ -116,8 +116,8 @@
     <div class="col-md-4"> 
       <table class="table caption-top table-bordered border-dark">
         <caption class="fs-4 fw-bold">決済方法ごとの支出額（今月）</caption>
-        <thead>
-          <tr class="table-info border"><th>決済方法</th><th>今月の支出額</th></tr>
+        <thead class="table-info border-dark">
+          <tr><th>決済方法</th><th>支出額</th></tr>
         </thead>
         <tbody>
           <% @this_month_payment.each do |key, value| %>

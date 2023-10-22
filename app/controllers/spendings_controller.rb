@@ -50,6 +50,8 @@ class SpendingsController < ApplicationController
 
   def show
     @banks = current_user.banks.all
+    settlement = @spending.settlement
+    @bank = settlement.bank
   end
 
   def search
