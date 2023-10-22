@@ -14,11 +14,11 @@
   <hr>
 
   <h4 class="fs-5 fw-light">登録されている決済方法</h4>
-  <ul class="mb-4">
+  <div class="mb-4">
     <% @settlements.each do |settlement| %>
-      <li class="fs-4 fw-bold list-unstyled"><%= settlement.payment %></li>
+      <div class="fs-4 fw-bold"><%= settlement.payment %></div>
     <% end %>
-  </ul>
+  </div>
 </dl>
 <hr>
 <hr>
