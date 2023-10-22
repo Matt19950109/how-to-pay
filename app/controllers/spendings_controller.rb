@@ -54,7 +54,7 @@ class SpendingsController < ApplicationController
 
   def search
     @q = current_user.spendings.ransack(params[:q])
-    @spendings = @q.result
+    @spendings = @q.result.order(start_time: :desc)
   end
 
   private
