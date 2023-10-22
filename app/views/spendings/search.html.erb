@@ -39,7 +39,7 @@
         </div>
 
         <%#価格フォーム%>
-        <div class="mb-5">
+        <div class="mb-2">
           <%= f.label :price_gteq, '価格', class:"form-label fw-bold fs-5 mb-2"%>
           <br>
           <div class="row">
@@ -49,15 +49,16 @@
         </div>
 
         <%#検索ボタン%>
-        <%= f.submit '検索', class: "btn btn-outline-success fw-bold mb-5" %>
+        <%= f.submit '支出を検索', class: "btn btn-success fw-bold" %>
       <% end %>
+          <div class="fs-light mb-5">※検索実施後、検索結果が下に表示されます</div>
     </div>
     <hr>
 
 
     <div class="col-md-8">
       <table class="table caption-top text-nowrap table-bordered border-dark">
-        <caption class="fw-bold">検索結果</caption>
+        <caption class="fw-bold fs-4">検索結果</caption>
         <thead class="text-center table-success border-dark">
           <tr><th>購入日</th><th>決済方法</th><th>品目名</th><th>カテゴリ</th><th>支出額</th><th>添付写真の有無</th><th>詳細確認</th></tr>
         </thead>
@@ -81,5 +82,5 @@
       </table>
     </div>
 
-  <%= link_to '支出一覧ページに戻る', spendings_path, class: "col-md-4 btn btn-outline-success fw-bold mb-5" %>
+  <%= link_to '支出一覧ページに戻る', spendings_path, class: "col-md-4 btn btn-success fw-bold mb-5" %>
 </div>
