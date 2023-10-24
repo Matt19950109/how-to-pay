@@ -5,7 +5,7 @@ How to Pay
 決済方法ごとに支出額を確認できる家計簿アプリ
 
 # URL
-デプロイ作業実施後記載予定
+https://how-to-pay.onrender.com
 
 # テスト用アカウント
 
