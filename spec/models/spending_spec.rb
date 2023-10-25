@@ -29,18 +29,29 @@ RSpec.describe Spending, type: :model do
         expect(@spending.errors.full_messages).to include("Price is out of range")
       end
       it 'カテゴリーを指定しないと登録できない' do
+        @spending.category_id = nil
+        @spending.valid?
+        expect(@spending.errors.full_messages).to include("Category can't be blank")
       end
       it '品目名を入力しないと登録できない' do
-      end
-      it '決済方法を指定しないと登録できない' do
+        @spending.item_name = nil
+        @spending.valid?
+        expect(@spending.errors.full_messages).to include("Item name can't be blank")
       end
       it '購入日を指定しないと登録できない' do
+        @spending.start_time = nil
+        @spending.valid?
+        expect(@spending.errors.full_messages).to include("Start time can't be blank")
       end
       it 'Userが紐づいていないと登録できない' do
+        @spending.user = nil
+        @spending.valid?
+        expect(@spending.errors.full_messages).to include("User must exist")
       end
       it '決済方法(settlementモデル)のデータが紐づいていないと登録できない' do
-      end
-      it '銀行モデルのデータが紐づいていないと登録できない' do
+        @spending.settlement = nil
+        @spending.valid?
+        expect(@spending.errors.full_messages).to include("Settlement must exist")
       end
     end
   end
