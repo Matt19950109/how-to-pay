@@ -41,3 +41,14 @@
 .calender-table tr td:hover {
   background-color: #FFFF8c;    
 }
+
+/*カルーセルの矢印の色を変更*/
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  height: 40px;
+  width: 40px;
+  outline: black;
+  background-color: rgba(0, 0, 0, 0.3);
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  border: 1px solid black;
+}
