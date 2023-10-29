@@ -1,5 +1,30 @@
 
 <div class = container>  <!-- 全体を囲むコンテナ -->
+  
+  <!-- カルーセルの表示 -->
+  <div class="carousel slide " data-bs-ride="carousel" id="crs1">
+    <div class="carousel-indicaters">
+      <button data-bs-target="#crs1" data-bs-slide-to="0" class="active"></button>
+      <button data-bs-target="#crs1" data-bs-slide-to="1"></button>
+      <button data-bs-target="#crs1" data-bs-slide-to="2"></button>
+      <button data-bs-target="#crs1" data-bs-slide-to="3"></button>
+    </div>
+    <div class="carousel-inner" style="height: 300px;border: solid 4px #000000;">
+      <div class="carousel-item active" style="height:300px;"><%= image_tag 'carousel_whole.png', class:"img-fluid h-100"%></div>
+      <div class="carousel-item" style="height:300px;"><%= image_tag 'carousel_bank.png', class:"img-fluid h-100"%></div>
+      <div class="carousel-item" style="height:300px;"><%= image_tag 'carousel_settlement.png', class:"img-fluid h-100"%></div>
+      <div class="carousel-item" style="height:300px;"><%= image_tag 'carousel_spending.png', class:"img-fluid h-100"%></div>
+    </div>
+    <button class="carousel-control-prev" data-bs-target="#crs1" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">前へ</span>
+    </button>
+    <button class="carousel-control-next" data-bs-target="#crs1" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      <span class="visually-hidden">前へ</span>
+    </button>
+  </div>
+  <!-- カルーセルの記述終了 -->
 
   <div class="d-md-flex justify-content-between flex-wrap gap-4 mt-md-4">
     <%#銀行名登録のボタン%>
