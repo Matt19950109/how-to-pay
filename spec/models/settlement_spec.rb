@@ -21,29 +21,29 @@ RSpec.describe Settlement, type: :model do
       it '決済方法を入力しないと登録できない' do
         @settlement.payment = nil
         @settlement.valid?
-        expect(@settlement.errors.full_messages).to include("Payment can't be blank")
+        expect(@settlement.errors.full_messages).to include("決済方法を入力してください")
       end
       it '決済方法が30字以上なら登録できない' do
         @settlement.payment = Faker::Lorem.characters(number:31)
         @settlement.valid?
-        expect(@settlement.errors.full_messages).to include("Payment is too long (maximum is 30 characters)")
+        expect(@settlement.errors.full_messages).to include("決済方法は30文字以内で入力してください")
       end
       it '一人のユーザーが重複した決済名を登録できない' do
         same_data = FactoryBot.create(:settlement)
         @settlement.user.nickname = same_data.user.nickname
         @settlement.user_id = same_data.user_id
         @settlement.valid?
-        expect(@settlement.errors.full_messages).to include("Payment has already been taken")
+        expect(@settlement.errors.full_messages).to include("決済方法はすでに存在します")
       end
       it 'Userが紐づいていないと登録できない' do
         @settlement.user = nil
         @settlement.valid?
-        expect(@settlement.errors.full_messages).to include("User must exist")
+        expect(@settlement.errors.full_messages).to include("Userを入力してください")
       end
       it '銀行名の登録(Bankモデル)のデータが紐づいていないと登録できない' do
         @settlement.bank = nil
         @settlement.valid?
-        expect(@settlement.errors.full_messages).to include("Bank must exist")
+        expect(@settlement.errors.full_messages).to include("銀行名を入力してください")
       end
     end
   end

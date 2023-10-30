@@ -21,29 +21,29 @@ RSpec.describe Bank, type: :model do
       it '設定金額を入力しないと登録できない' do
         @bank.amount_price = nil
         @bank.valid?
-        expect(@bank.errors.full_messages).to include("Amount price can't be blank")
+        expect(@bank.errors.full_messages).to include("設定金額を入力してください")
       end
       it '銀行名がないと登録できない' do
         @bank.name = nil
         @bank.valid?
-        expect(@bank.errors.full_messages).to include("Name can't be blank")
+        expect(@bank.errors.full_messages).to include("銀行名を入力してください")
       end
       it '銀行名が30字以上なら登録できない' do
         @bank.name = Faker::Lorem.characters(number:31)
         @bank.valid?
-        expect(@bank.errors.full_messages).to include("Name is too long (maximum is 30 characters)")
+        expect(@bank.errors.full_messages).to include("銀行名は30文字以内で入力してください")
       end
       it '一人のユーザーが重複した銀行名を登録できない' do
         same_data = FactoryBot.create(:bank)
         @bank.user.nickname = same_data.user.nickname
         @bank.user_id = same_data.user_id
         @bank.valid?
-        expect(@bank.errors.full_messages).to include("Name has already been taken")
+        expect(@bank.errors.full_messages).to include("銀行名はすでに存在します")
       end
       it 'Userが紐づいていないと登録できない' do
         @bank.user = nil
         @bank.valid?
-        expect(@bank.errors.full_messages).to include("User must exist")
+        expect(@bank.errors.full_messages).to include("Userを入力してください")
       end
     end
   end
