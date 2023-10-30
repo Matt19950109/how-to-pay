@@ -1,6 +1,7 @@
 <h2>Log in</h2>
 
 <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
+    <%#ログイン時のエラーメッセージ%>
     <div class='login-flash-message'>
     <%= flash[:notice] %>
     <%= flash[:alert] %>
