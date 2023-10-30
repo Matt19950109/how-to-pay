@@ -5,12 +5,13 @@
   </div>
 
   <%= form_with model: @bank, local: true do |f| %>
-    <%= render 'shared/error_messages', model: @bank %>
+      <%#エラーメッセージ%>
+      <%= render 'layouts/error_messages', model: f.object %>
     
       <div class='row gx-2 mb-5'>  <!-- 設定金額入力フォーム -->
         <%= f.label :設定金額 , class: "col-md-3 col-form-label text-md-end fw-bold" %>
         <div class="col-md-5">
-          <%= f.number_field :amount_price, class:"form-control" %>
+          <%= f.number_field :amount_price, class:"form-control", placeholder: "数字を入力" %>
           <div class="form-text">※半角数字で入力してください</div>
         </div>
       </div>

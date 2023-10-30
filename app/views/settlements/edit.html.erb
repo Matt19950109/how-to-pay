@@ -6,7 +6,8 @@
 
     <%= form_with model: @settlement, local: true do |f| %>
 
-    <%= render 'shared/error_messages', model: @settlement %>
+      <%#エラーメッセージ%>
+      <%= render 'layouts/error_messages', model: f.object %>
 
       <div class="row gx-2 mb-5">  <!-- 決済方法入力フォーム -->
         <%= f.label :payment, '決済方法', class: "col-md-3 col-form-label text-md-end fw-bold" %>               

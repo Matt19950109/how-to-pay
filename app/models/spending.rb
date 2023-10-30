@@ -10,9 +10,9 @@ class Spending < ApplicationRecord
 
   # バリデーション
   validates :price,         presence: true
-  validates :price,         numericality: { only_integer: true, less_than_or_equal_to: 99999999, message: "is out of range" }
+  validates :price,         numericality: { only_integer: true, less_than_or_equal_to: 99999999, message: "を1億円以内に設定してください" }
   validates :item_name,     presence: true
-  validates :category_id,   numericality: { message: "can't be blank"}
+  validates :category_id,   numericality: { message: "を選択してください"}
   validates :start_time,    presence: true
 
   def self.ransackable_attributes(auth_object = nil)

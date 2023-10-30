@@ -21,37 +21,37 @@ RSpec.describe Spending, type: :model do
       it '支出額を入力しないと登録できない' do
         @spending.price = nil
         @spending.valid?
-        expect(@spending.errors.full_messages).to include("Price can't be blank")
+        expect(@spending.errors.full_messages).to include("支出額を入力してください")
       end
       it '金額が100,000,000円以上の支出は登録できない' do
         @spending.price = 100000000
         @spending.valid?
-        expect(@spending.errors.full_messages).to include("Price is out of range")
+        expect(@spending.errors.full_messages).to include("支出額を1億円以内に設定してください")
       end
       it 'カテゴリーを指定しないと登録できない' do
         @spending.category_id = nil
         @spending.valid?
-        expect(@spending.errors.full_messages).to include("Category can't be blank")
+        expect(@spending.errors.full_messages).to include("カテゴリーを選択してください")
       end
       it '品目名を入力しないと登録できない' do
         @spending.item_name = nil
         @spending.valid?
-        expect(@spending.errors.full_messages).to include("Item name can't be blank")
+        expect(@spending.errors.full_messages).to include("品目名を入力してください")
       end
       it '購入日を指定しないと登録できない' do
         @spending.start_time = nil
         @spending.valid?
-        expect(@spending.errors.full_messages).to include("Start time can't be blank")
+        expect(@spending.errors.full_messages).to include("購入日を入力してください")
       end
       it 'Userが紐づいていないと登録できない' do
         @spending.user = nil
         @spending.valid?
-        expect(@spending.errors.full_messages).to include("User must exist")
+        expect(@spending.errors.full_messages).to include("Userを入力してください")
       end
       it '決済方法(settlementモデル)のデータが紐づいていないと登録できない' do
         @spending.settlement = nil
         @spending.valid?
-        expect(@spending.errors.full_messages).to include("Settlement must exist")
+        expect(@spending.errors.full_messages).to include("決済方法を入力してください")
       end
     end
   end
