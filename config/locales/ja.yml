@@ -2,6 +2,8 @@
 ja:
   activerecord:
     attributes:
+      user:
+        nickname: ニックネーム
       bank:
         amount_price: 設定金額
         name: 銀行名
