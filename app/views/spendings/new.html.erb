@@ -1,4 +1,3 @@
-<%= render 'shared/error_messages', model: @spending %>
 <div class="container">  <!-- 全体を囲むコンテナ -->
     <div class="row">
     <h4 class="text-md-end col-md-4 mb-3">支出の登録</h4>
@@ -6,7 +5,8 @@
 
 
     <%= form_with model: @spending, url:spendings_path, local: true do |f| %>
-
+      <%#エラーメッセージ%>
+      <%= render 'layouts/error_messages', model: f.object %>
 
       <div class="row gx-2 mb-4">  <!-- 支出入力フォーム -->
         <%= f.label :price, '支出額', class: "col-md-3 col-form-label text-md-end fw-bold" %>

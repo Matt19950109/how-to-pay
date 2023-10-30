@@ -5,7 +5,8 @@
 
     <%= form_with model: @spending, local: true do |f| %>
 
-    <%= render 'shared/error_messages', model: @spending %>
+      <%#エラーメッセージ%>
+      <%= render 'layouts/error_messages', model: f.object %>
 
       <div class="row gx-2 mb-4">  <!-- 支出入力フォーム -->
         <%= f.label :price, '支出額', class: "col-md-3 col-form-label text-md-end fw-bold" %>
