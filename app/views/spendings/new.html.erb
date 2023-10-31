@@ -17,7 +17,7 @@
       </div>
 
       <div class="row gx-2 mb-4">  <!-- カテゴリー入力フォーム -->
-      <%= f.label :category_id, 'カテゴリー選択', class: "col-md-3 col-form-label text-md-end fw-bold" %>
+      <%= f.label :category_id, 'カテゴリー', class: "col-md-3 col-form-label text-md-end fw-bold" %>
       <div class="col-md-4">
         <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: '-- 選択してください --' }, class: 'form-control form-select' %>
       </div>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="row gx-2 mb-4">  <!-- 決済方法選択フォーム -->
-      <%= f.label :settlement_id, '決済方法選択' , class: "col-md-3 col-form-label text-md-end fw-bold"%>
+      <%= f.label :settlement_id, '決済方法' , class: "col-md-3 col-form-label text-md-end fw-bold"%>
       <div class="col-md-4">
         <%= f.collection_select :settlement_id, @settlements.all, :id, :payment, { prompt: '-- 選択してください --' }, class: 'form-control form-select' %>
         <div class="form-text">※STEP②で登録した決済方法が表示されます</div>
