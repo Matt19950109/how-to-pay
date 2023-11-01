@@ -7,7 +7,7 @@
 
           <%#決済手段フォーム%>
           <div class="form-check-inline mb-5" >
-            <%= f.label :settlement_id_in, '決済手段名', class: "form-check-label text-md-start fw-bold fs-5 mb-2" %>
+            <%= f.label :settlement_id_in, '決済手段名', class: "form-check-label bg-success bg-opacity-10 text-md-start fw-bold fs-5 mb-2" %>
             <br>
             <div>
             <%= f.collection_check_boxes(:settlement_id_in, @settlements.all, :id, :payment, class: "form-check-input") %>
@@ -16,21 +16,21 @@
 
         <%#支出名フォーム%>
         <div class="mb-5">
-          <%= f.label :item_name_cont, '支出名', class:"form-label fw-bold fs-5 mb-2" %>
+          <%= f.label :item_name_cont, '支出名', class:"form-label fw-bold bg-success bg-opacity-10 fs-5 mb-2" %>
           <br>
           <div class="col-md-4"><%= f.text_field :item_name_cont, placeholder: '支出名を入力', class:"form-control" %></div>
         </div>
 
         <%#カテゴリフォーム%>
         <div class="mb-5">
-          <%= f.label :category_id_in, 'カテゴリ', class:"form-label fw-bold fs-5 mb-2" %>
+          <%= f.label :category_id_in, 'カテゴリ', class:"form-label fw-bold bg-success bg-opacity-10 fs-5 mb-2" %>
           <br>
           <%= f.collection_check_boxes(:category_id_in, Category.all, :id, :name) %>
         </div>
 
         <%#購入日フォーム%>
         <div class="mb-5">
-          <%= f.label :start_time_lteq, '購入日', class:"form-label fw-bold fs-5 mb-2"%>
+          <%= f.label :start_time_lteq, '購入日', class:"form-label fw-bold bg-success bg-opacity-10 fs-5 mb-2"%>
           <br>
           <div class="row">          
             <div class="col-md-4"><%= f.date_field :start_time_gteq, class: 'form-control' %></div>～
@@ -40,7 +40,7 @@
 
         <%#価格フォーム%>
         <div class="mb-2">
-          <%= f.label :price_gteq, '価格', class:"form-label fw-bold fs-5 mb-2"%>
+          <%= f.label :price_gteq, '価格', class:"form-label fw-bold bg-success bg-opacity-10 fs-5 mb-2"%>
           <br>
           <div class="row">
             <div class="col-md-4"><%= f.number_field :price_gteq, placeholder:'円以上', class: 'form-control' %></div>～
