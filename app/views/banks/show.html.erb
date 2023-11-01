@@ -3,17 +3,17 @@
   <br>
 
   <!-- データリスト -->
-  <dt class="fs-5 fw-light">銀行名</dt>
+  <dt class="fs-5 fw-light bg-secondary bg-opacity-10">銀行名</dt>
   <dd class="fs-3 fw-bold mb-4"><%= @bank.name %></dd>
   <hr>
   <hr>
 
-  <dt class="fs-5 fw-light">目標設定金額</dt>
+  <dt class="fs-5 fw-light bg-secondary bg-opacity-10">目標設定金額</dt>
   <dd class="fs-3 fw-bold mb-4"><%= @bank.amount_price %></dd>
   <hr>
   <hr>
 
-  <h4 class="fs-5 fw-light">登録されている決済方法</h4>
+  <h4 class="fs-5 fw-light bg-secondary bg-opacity-10">登録されている決済方法</h4>
   <div class="mb-4">
     <% @settlements.each do |settlement| %>
       <div class="fs-4 fw-bold"><%= settlement.payment %></div>

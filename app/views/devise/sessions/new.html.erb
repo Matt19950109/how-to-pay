@@ -1,30 +1,49 @@
-<h2>ログイン</h2>
+<div class="container">  <!-- 全体を囲むコンテナ -->
+  <div class="row gx-2 mb-5">
+    <h2 class="col-md-6 text-md-center">ログイン画面</h2>
+  </div>
 
-<%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
-    <%#ログイン時のエラーメッセージ%>
-    <div class='login-flash-message'>
-    <%= flash[:notice] %>
-    <%= flash[:alert] %>
+  <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
+      <%#ログイン時のエラーメッセージ%>
+      <div class='login-flash-message'>
+      <%= flash[:notice] %>
+      <%= flash[:alert] %>
+      </div>
+    <div class='row gx-2 mb-5'>
+      <%= f.label :email, class: "col-md-3 col-form-label text-md-end fw-bold" %>
+      <div class="col-md-5">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      </div>
     </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <div class='row gx-2 mb-5'>
+      <%= f.label :password, class: "col-md-3 col-form-label text-md-end fw-bold"  %>
+      <div class="col-md-5">
+        <%= f.password_field :password, autocomplete: "current-password", class:"form-control" %>
+      </div>
+    </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <% if devise_mapping.rememberable? %>
+      <div class='row gx-2 mb-5'>
+        <div class="fs-5 col-md-7 col-form-label text-md-center fw-bold">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="row gx-2 mb-5">
+      <div class="col-md-6 text-md-center">
+        <%= f.submit "ログインする", class: "btn btn-primary" %>
+      </div>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit "ログインする" %>
-  </div>
-<% end %>
+  <br>
 
+  <div class="row gx-2 mb-5">
+    <div class="col-md-6 text-md-center">
+      <%= link_to 'トップページに戻る', root_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

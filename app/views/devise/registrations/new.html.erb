@@ -1,35 +1,58 @@
-<h2>新規登録</h2>
+<div class="container">  <!-- 全体を囲むコンテナ -->
 
-<%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local:true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-  <%= f.label :nickname %> <em>(12 文字以内)</em><br />
-  <%= f.text_field :nickname, autofocus: true, maxlength: "12" %>
+  <div class="row gx-2 mb-5">
+    <h2 class="col-md-6 text-md-center">新規登録画面</h2>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <%= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local:true do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="row gx-2 mb-5">
+      <%= f.label :nickname, class: "col-md-3 col-form-label text-md-end fw-bold" %>
+      <div class="col-md-5">
+        <%= f.text_field :nickname, autofocus: true, maxlength: "12", placeholder:"12文字以内で入力", class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="row gx-2 mb-5">
+      <%= f.label :email, class: "col-md-3 col-form-label text-md-end fw-bold" %>
+      <div class="col-md-5">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="row gx-2 mb-5">
+      <%= f.label :password, class: "col-md-3 col-form-label text-md-end fw-bold" %>
+      <div class="col-md-5">
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> 文字以上かつ半角文字・数字を各1字以上入れること)</em>
+        <% end %>
+        <%= f.password_field :password, autocomplete: "new-password", class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="row gx-2 mb-5">
+      <%= f.label :password_confirmation, class: "col-md-3 col-form-label text-md-end fw-bold" %>
+      <div class="col-md-5">
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control" %>
+      </div>
+    </div>
+
+    <div class="row gx-2 mb-5">
+      <div class="col-md-6 text-md-center">
+        <%= f.submit "ログインする", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+  <br>
+
+  <div class="row gx-2 mb-5">
+    <div class="col-md-6 text-md-center">
+      <%= link_to 'トップページに戻る', root_path, class: "btn btn-primary" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上かつ半角文字・数字を各1字以上入れること)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+  <%= render "devise/shared/links" %>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログインする" %>
-  </div>
-<% end %>
-
-
-<%= render "devise/shared/links" %>
+</div>
